@@ -49,19 +49,21 @@ const Home: React.FC = () => {
                     <Text>
                         How would you utilize React.useEffect with the searchSchoolDistricts and searchSchools functions? <br />
                         Using <a href="https://chakra-ui.com/docs/principles" target="_blank">Chakra-UI</a> or your favorite UI toolkit, build an interface that allows the user to: <br />
+                    </Text>
                         <OrderedList>
                             <ListItem>Search for a district</ListItem>
                             <ListItem>Search for a school within the district (or bypass district filter)</ListItem>
                             <ListItem>View all returned data in an organized way</ListItem>
                         </OrderedList>
-                    </Text>
+
                     <Divider margin={4} />
                     <Text>
                         Check the console for example of returned data. <b>Happy coding!</b>< br />
+                    </Text>
                         {searching ? <Spinner /> : <></>}< br />
                         {districtSearch.length} Demo Districts<br />
                         {schoolSearch.length} Demo Schools<br />
-                    </Text>
+
                 </Card>
             </ScaleFade>
         </Center>
