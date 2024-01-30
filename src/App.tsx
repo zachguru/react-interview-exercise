@@ -1,3 +1,4 @@
+import DistrictMap from '@components/DistrictMap'
 import Header from '@components/Header'
 import Home from '@components/Home'
 
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <Header />
       <Home />
+      <DistrictMap/>
     </div>
   )
 }
