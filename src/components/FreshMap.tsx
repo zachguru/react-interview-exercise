@@ -48,7 +48,7 @@ const FreshMap: React.FC = () => {
         </InputRightElement>
       </InputGroup>
       <RadioGroupStack/>
-      {searching ? <Spinner width="75vh" /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
+      {searching ? <Spinner width="75vh" height="75vh" /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
     </>
   );
 };
