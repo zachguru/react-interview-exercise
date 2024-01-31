@@ -70,7 +70,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <Container>
+    <>
       <Center padding="100px" height="90vh">
         <ScaleFade initialScale={0.9} in={true}>
           <Card variant="rounded" borderColor="blue">
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
           </Card>
         </ScaleFade>
       </Center>
-    </Container>
+    </>
   );
 };
 

@@ -37,7 +37,7 @@ const FreshMap: React.FC = () => {
   };
 
   return (
-    <Container>
+    <>
       <InputGroup>
         <Input size="md" placeholder="Search for district" value={district} onChange={handleDistrictChange} />
         <InputRightElement width="4.5rem">
@@ -47,7 +47,7 @@ const FreshMap: React.FC = () => {
         </InputRightElement>
       </InputGroup>
       {searching ? <Spinner width="75vh" /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
-    </Container>
+    </>
   );
 };
 
