@@ -24,6 +24,7 @@ const FreshMap: React.FC = () => {
   const [dataMarkers, setDataMarkers] = useState<NCESDistrictFeatureAttributes[]>([]);
   const [center, setCenter] = useState<[number, number]>([39.8283, -98.5795]);
   const [zoom, setZoom] = useState(4);
+  const [selectedView, setSelectedView] = useState('Map View')
 
   const handleDistrictChange = (event: any) => {
     setDistrict(event.target.value);
@@ -37,6 +38,10 @@ const FreshMap: React.FC = () => {
     setSearching(false);
   };
 
+  const handleViewSelection = (e:any) => {
+    setSelectedView(e);
+  }
+
   return (
     <>
       <InputGroup>
@@ -47,8 +52,8 @@ const FreshMap: React.FC = () => {
           </Button>
         </InputRightElement>
       </InputGroup>
-      <RadioGroupStack/>
-      {searching ? <Spinner width="75vh" height="75vh" /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
+      <RadioGroupStack handleSwitch={handleViewSelection}/>
+      {searching ? <Spinner width="75vh" height='75vh' /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
     </>
   );
 };

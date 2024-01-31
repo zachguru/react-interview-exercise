@@ -2,13 +2,17 @@ import { HStack, useRadioGroup } from "@chakra-ui/react";
 import React from "react";
 import { RadioCard } from '@components/design/RadioCard'
 
-export const RadioGroupStack: React.FC = () => {
+export interface RadioGroupProps {
+    handleSwitch : (e:any) => void
+}
+
+export const RadioGroupStack: React.FC<RadioGroupProps> = ({handleSwitch}) => {
   const options = ['Map View', 'Table View'];
 
   const { getRootProps, getRadioProps } = useRadioGroup({
     name: 'view',
     defaultValue: 'Map View',
-    onChange: console.log,
+    onChange: handleSwitch,
   });
 
   const group = getRootProps();
