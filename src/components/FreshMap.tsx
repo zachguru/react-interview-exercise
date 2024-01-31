@@ -16,6 +16,7 @@ import {
 } from '../utils/nces';
 import DistrictMap from './DistrictMap';
 import L from 'leaflet';
+import { RadioGroupStack } from './design/RadioGroupStack';
 
 const FreshMap: React.FC = () => {
   const [searching, setSearching] = React.useState(false);
@@ -46,6 +47,7 @@ const FreshMap: React.FC = () => {
           </Button>
         </InputRightElement>
       </InputGroup>
+      <RadioGroupStack/>
       {searching ? <Spinner width="75vh" /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
     </>
   );
