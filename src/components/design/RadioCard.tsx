@@ -17,9 +17,9 @@ export const RadioCard: React.FC<UseRadioProps> = (props) => {
         borderRadius="md"
         boxShadow="md"
         _checked={{
-          bg: 'teal.600',
+          bg: 'green.400',
           color: 'white',
-          borderColor: 'teal.600',
+          borderColor: 'green.600',
         }}
         _focus={{
           boxShadow: 'outline',
