@@ -72,7 +72,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Center padding="100px" height="90vh">
+      <Center height='105vh'>
         <ScaleFade initialScale={0.9} in={true}>
           <Card variant="rounded" borderColor="blue">
             <Heading>School Data Finder</Heading>
