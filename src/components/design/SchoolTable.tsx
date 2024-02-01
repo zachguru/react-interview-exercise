@@ -6,40 +6,65 @@ export interface SchoolTableProps {
   data: NCESDistrictFeatureAttributes[];
 }
 
-export const SchoolTable: React.FC<SchoolTableProps> = ({data}) => {
+export const SchoolTable: React.FC<SchoolTableProps> = ({ data }) => {
   return (
-    <TableContainer>
+    <TableContainer margin="10px">
       <Table variant="striped" colorScheme="green">
-        <TableCaption>Imperial to metric conversion factors</TableCaption>
+        <TableCaption>Schools and school districts</TableCaption>
         <Thead>
           <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
+            <Th>CBSA 15</Th>
+            <Th>CBSA TYPE 15</Th>
+            <Th>CD15</Th>
+            <Th>CNTY15</Th>
+            <Th>CSA15</Th>
+            <Th>LAT1516</Th>
+            <Th>LCITY</Th>
+            <Th>LEAID</Th>
+            <Th>LON1516</Th>
+            <Th>LSTREET</Th>
+            <Th>LZIP</Th>
+            <Th>LZIP4</Th>
+            <Th>NAME</Th>
+            <Th>NECTA15</Th>
           </Tr>
         </Thead>
         <Tbody>
-          <Tr>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-            <Td isNumeric>25.4</Td>
-          </Tr>
-          <Tr>
-            <Td>feet</Td>
-            <Td>centimetres (cm)</Td>
-            <Td isNumeric>30.48</Td>
-          </Tr>
-          <Tr>
-            <Td>yards</Td>
-            <Td>metres (m)</Td>
-            <Td isNumeric>0.91444</Td>
-          </Tr>
+          {data.map((school, index) => (
+            <Tr>
+              <Td>{school.CBSA15}</Td>
+              <Td>{school.CBSATYPE15}</Td>
+              <Td>{school.CD15}</Td>
+              <Td>{school.CNTY15}</Td>
+              <Td>{school.CSA15}</Td>
+              <Td>{school.LAT1516}</Td>
+              <Td>{school.LCITY}</Td>
+              <Td>{school.LEAID}</Td>
+              <Td>{school.LON1516}</Td>
+              <Td>{school.LSTREE}</Td>
+              <Td>{school.LZIP}</Td>
+              <Td>{school.LZIP4}</Td>
+              <Td>{school.NAME}</Td>
+              <Td>{school.NECTA15}</Td>
+            </Tr>
+          ))}
         </Tbody>
         <Tfoot>
           <Tr>
-            <Th>To convert</Th>
-            <Th>into</Th>
-            <Th isNumeric>multiply by</Th>
+            <Th>CBSA 15</Th>
+            <Th>CBSA TYPE 15</Th>
+            <Th>CD15</Th>
+            <Th>CNTY15</Th>
+            <Th>CSA15</Th>
+            <Th>LAT1516</Th>
+            <Th>LCITY</Th>
+            <Th>LEAID</Th>
+            <Th>LON1516</Th>
+            <Th>LSTREET</Th>
+            <Th>LZIP</Th>
+            <Th>LZIP4</Th>
+            <Th>NAME</Th>
+            <Th>NECTA15</Th>
           </Tr>
         </Tfoot>
       </Table>
