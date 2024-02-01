@@ -47,7 +47,7 @@ const FreshMap: React.FC = () => {
 
   return (
     <>
-      <InputGroup>
+      <InputGroup width="400px">
         <Input size="md" placeholder="Search for district" value={district} onChange={handleDistrictChange} />
         <InputRightElement>
             <IconButton color='green.600' variant='ghost' rounded='false' aria-label='Search school district' icon={<SearchIcon/>} onClick={handleSearch}/>

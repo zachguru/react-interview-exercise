@@ -17,6 +17,7 @@ import {
   InputRightAddon,
   Container,
   InputRightElement,
+  Box,
 } from '@chakra-ui/react';
 import { Card } from '@components/design/Card';
 import {
@@ -100,6 +101,7 @@ const Home: React.FC = () => {
             {schoolSearch.length} Demo Schools
             <br /> */}
             <FreshMap />
+            <Box marginTop={4} />
           </Card>
         </ScaleFade>
       </Center>
