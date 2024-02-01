@@ -19,6 +19,7 @@ import DistrictMap from './DistrictMap';
 import L from 'leaflet';
 import { RadioGroupStack } from './design/RadioGroupStack';
 import { SearchIcon } from '@chakra-ui/icons';
+import { SchoolTable } from './design/SchoolTable';
 
 const FreshMap: React.FC = () => {
   const [searching, setSearching] = React.useState(false);
@@ -53,7 +54,7 @@ const FreshMap: React.FC = () => {
         </InputRightElement>
       </InputGroup>
       <RadioGroupStack handleSwitch={handleViewSelection}/>
-      {searching ? <Spinner width="75vh" height='75vh' thickness='10px' color='green.400' /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
+      {searching ? <Spinner width="75vh" height='75vh' thickness='10px' color='green.400' /> :(selectedView=='Map View' ? <DistrictMap center={center} zoom={zoom} markers={dataMarkers} /> : <SchoolTable data={dataMarkers}/>)}
     </>
   );
 };
