@@ -7,6 +7,7 @@ import {
   Container,
   InputRightElement,
   Text,
+  IconButton,
 } from '@chakra-ui/react';
 import {
   searchSchoolDistricts,
@@ -17,6 +18,7 @@ import {
 import DistrictMap from './DistrictMap';
 import L from 'leaflet';
 import { RadioGroupStack } from './design/RadioGroupStack';
+import { SearchIcon } from '@chakra-ui/icons';
 
 const FreshMap: React.FC = () => {
   const [searching, setSearching] = React.useState(false);
@@ -46,14 +48,12 @@ const FreshMap: React.FC = () => {
     <>
       <InputGroup>
         <Input size="md" placeholder="Search for district" value={district} onChange={handleDistrictChange} />
-        <InputRightElement width="4.5rem">
-          <Button h="1.75rem" size="sm" onClick={handleSearch}>
-            Search
-          </Button>
+        <InputRightElement>
+            <IconButton color='green.600' variant='ghost' rounded='false' aria-label='Search school district' icon={<SearchIcon/>} onClick={handleSearch}/>
         </InputRightElement>
       </InputGroup>
       <RadioGroupStack handleSwitch={handleViewSelection}/>
-      {searching ? <Spinner width="75vh" height='75vh' /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
+      {searching ? <Spinner width="75vh" height='75vh' thickness='10px' color='green.400' /> : <DistrictMap center={center} zoom={zoom} markers={dataMarkers} />}
     </>
   );
 };
