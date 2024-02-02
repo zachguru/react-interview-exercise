@@ -83,11 +83,15 @@ const SchoolMarkers: React.FC<SchoolMarkerProps> = ({ data }) => {
                 <strong>Name: </strong> {marker.NAME}
               </p>
               <p>
-                <strong>Location: </strong> {marker.CITY}, {marker.STATE}, {marker.ZIP}
+                <strong>Location: </strong> {marker.STREET}, {marker.CITY}, {marker.STATE}, {marker.ZIP}
               </p>
               <p>
                 <strong>County: </strong>
                 {marker.NMCNTY}
+              </p>
+              <p>
+                <strong>Locale: </strong>
+                {marker.LOCALE}
               </p>
             </div>
           </Popup>
