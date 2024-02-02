@@ -4,14 +4,16 @@ import { RadioCard } from '@components/design/RadioCard'
 
 export interface RadioGroupProps {
     handleSwitch : (e:any) => void
+    options : string[]
+    defaultValue: string
+    name: string
 }
 
-export const RadioGroupStack: React.FC<RadioGroupProps> = ({handleSwitch}) => {
-  const options = ['Map View', 'Table View'];
+export const RadioGroupStack: React.FC<RadioGroupProps> = ({handleSwitch, options, defaultValue, name}) => {
 
   const { getRootProps, getRadioProps } = useRadioGroup({
-    name: 'view',
-    defaultValue: 'Map View',
+    name: name,
+    defaultValue: defaultValue,
     onChange: handleSwitch,
   });
 

@@ -34,6 +34,8 @@ const FreshMap: React.FC = () => {
   const [leaid, setLeaid] = useState('')
   const [school, setSchool] = useState('')
 
+  const radioOptions = ['Map View', 'Table View'];
+
   const handleDistrictChange = (event: any) => {
     setDistrict(event.target.value);
   };
@@ -106,7 +108,7 @@ const FreshMap: React.FC = () => {
           />
         </InputRightElement>
       </InputGroup>
-      <RadioGroupStack handleSwitch={handleViewSelection} />
+      <RadioGroupStack handleSwitch={handleViewSelection} options={radioOptions} defaultValue='Map View' name='view'/>
       {searching ? (
         <Spinner width="75vh" height="75vh" thickness="10px" color="green.400" />
       ) : selectedView == 'Map View' ? (
