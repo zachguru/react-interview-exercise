@@ -2,17 +2,25 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents, useMap, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L, { Icon, MapOptions } from 'leaflet';
-import locationIcon from '/location.png';
-import { NCESDistrictFeatureAttributes } from '@utils/nces';
+import locationIcon from '/placeholder.png';
+import schoolLocationIcon from '/schoolicon.png'
+import { NCESDistrictFeatureAttributes, NCESSchoolFeatureAttributes } from '@utils/nces';
 
 interface DistrictMapProps {
   center: [number, number];
   zoom: number;
-  markers: NCESDistrictFeatureAttributes[];
+  districtMarkers: NCESDistrictFeatureAttributes[];
+  schoolMarkers : NCESSchoolFeatureAttributes[];
+  handleDistrictSelection: (e:any) => void
 }
 
-interface MarkerData {
+interface DistrictMarkerProps {
   data: NCESDistrictFeatureAttributes[];
+  handleDistrictSelection: (e: any) => void;
+}
+
+interface SchoolMarkerProps {
+  data: NCESSchoolFeatureAttributes[];
 }
 
 const customIcon = new Icon({
@@ -20,7 +28,12 @@ const customIcon = new Icon({
   iconSize: [38, 38],
 });
 
-const Markers: React.FC<MarkerData> = ({ data }) => {
+const schoolIcon = new Icon({
+  iconUrl: schoolLocationIcon,
+  iconSize: [38,38]
+})
+
+const DistrictMarkers: React.FC<DistrictMarkerProps> = ({ data, handleDistrictSelection }) => {
   const map = useMap();
   return data.length > 0 ? (
     <>
@@ -32,6 +45,7 @@ const Markers: React.FC<MarkerData> = ({ data }) => {
           eventHandlers={{
             click: () => {
               map.setView([marker.LAT1516, marker.LON1516], 14);
+              handleDistrictSelection(marker.LEAID)
             },
           }}
         >
@@ -48,14 +62,51 @@ const Markers: React.FC<MarkerData> = ({ data }) => {
   ) : null;
 };
 
-const DistrictMap: React.FC<DistrictMapProps> = ({ center, zoom, markers }) => {
+const SchoolMarkers: React.FC<SchoolMarkerProps> = ({ data }) => {
+  const map = useMap();
+  return data.length > 0 ? (
+    <>
+      {data.map((marker, index) => (
+        <Marker
+          key={index}
+          position={[marker.LAT, marker.LON]}
+          icon={schoolIcon}
+          eventHandlers={{
+            click: () => {
+              map.setView([marker.LAT, marker.LON], 14);
+            },
+          }}
+        >
+          <Popup>
+            <div>
+              <p>
+                <strong>Name: </strong> {marker.NAME}
+              </p>
+              <p>
+                <strong>Location: </strong> {marker.CITY}, {marker.STATE}, {marker.ZIP}
+              </p>
+              <p>
+                <strong>County: </strong>
+                {marker.NMCNTY}
+              </p>
+            </div>
+          </Popup>
+        </Marker>
+      ))}
+    </>
+  ) : null;
+};
+
+
+const DistrictMap: React.FC<DistrictMapProps> = ({ center, zoom, districtMarkers, schoolMarkers, handleDistrictSelection }) => {
   return (
     <MapContainer center={center} zoom={zoom}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Markers data={markers} />
+      <DistrictMarkers data={districtMarkers} handleDistrictSelection={handleDistrictSelection} />
+      <SchoolMarkers data={schoolMarkers} />
     </MapContainer>
   );
 };

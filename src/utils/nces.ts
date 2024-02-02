@@ -11,8 +11,8 @@ export interface NCESSchoolFeatureAttributes {
     CNTY?: string,
     NMCNTY?: string,
     LOCALE?: string,
-    LAT?: number,
-    LON?: number
+    LAT: number,
+    LON: number
 }
 
 interface NCESSchoolFeature {
