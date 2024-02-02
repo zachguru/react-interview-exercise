@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents, useMap, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L, { Icon, MapOptions } from 'leaflet';
-import locationIcon from '/placeholder.png';
+import locationIcon from '/location.png';
 import schoolLocationIcon from '/schoolicon.png'
 import { NCESDistrictFeatureAttributes, NCESSchoolFeatureAttributes } from '@utils/nces';
 
