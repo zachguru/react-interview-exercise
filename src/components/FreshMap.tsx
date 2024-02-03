@@ -20,8 +20,8 @@ import DistrictMap from './DistrictMap';
 import L from 'leaflet';
 import { RadioGroupStack } from './design/RadioGroupStack';
 import { SearchIcon } from '@chakra-ui/icons';
-import { SchoolTable } from './design/SchoolTable';
 import { CENTEROFAMERICA } from 'src/constants/centerOfAmerica';
+import { TableView } from './design/TableView';
 
 const FreshMap: React.FC = () => {
   const [searching, setSearching] = React.useState(false);
@@ -114,7 +114,7 @@ const FreshMap: React.FC = () => {
       ) : selectedView == 'Map View' ? (
         <DistrictMap center={center} zoom={zoom} districtMarkers={districtDataMarkers} schoolMarkers={schoolDataMarkers} handleDistrictSelection={handleDistrictSelection} />
       ) : (
-        <SchoolTable data={districtDataMarkers} />
+        <TableView districtData={districtDataMarkers} schoolData={schoolDataMarkers} />
       )}
     </>
   );

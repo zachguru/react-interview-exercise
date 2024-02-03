@@ -1,23 +1,14 @@
 import { Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer } from '@chakra-ui/react';
 import { NCESDistrictFeatureAttributes } from '@utils/nces';
-import React, { useState } from 'react';
-import { RadioGroupStack } from './RadioGroupStack';
+import React from 'react';
 
-export interface SchoolTableProps {
+export interface DistrictTableProps {
   data: NCESDistrictFeatureAttributes[];
 }
 
-export const SchoolTable: React.FC<SchoolTableProps> = ({ data }) => {
-  const [view, setSelectedView] = useState('View Districts');
-  const viewOptions = ['View Districts', 'View Schools'];
-
-  const handleViewSelection = (e: any) => {
-    setSelectedView(e);
-  };
-
+export const DistrictTable: React.FC<DistrictTableProps> = ({ data }) => {
   return (
     <>
-      <RadioGroupStack options={viewOptions} handleSwitch={handleViewSelection} defaultValue="View Districts" name='view2'/>
       <TableContainer margin="10px">
         <Table size="sm" variant="striped" colorScheme="green">
           <TableCaption>Schools and school districts</TableCaption>
@@ -38,22 +29,30 @@ export const SchoolTable: React.FC<SchoolTableProps> = ({ data }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {data.map((school, index) => (
+            {data.length > 0 ? (
+              data.map((school, index) => (
+                <Tr>
+                  <Td>{school.LEAID}</Td>
+                  <Td>{school.NAME}</Td>
+                  <Td>{school.LSTATE}</Td>
+                  <Td>{school.CNTY15}</Td>
+                  <Td>{school.NMCNTY15}</Td>
+                  <Td>{school.CBSA15}</Td>
+                  <Td>{school.NMCBSA15}</Td>
+                  <Td>{school.CD15}</Td>
+                  <Td>{school.SLDL15}</Td>
+                  <Td>{school.SLDU15}</Td>
+                  <Td>{school.LZIP}</Td>
+                  <Td>{school.LZIP4}</Td>
+                </Tr>
+              ))
+            ) : (
               <Tr>
-                <Td>{school.LEAID}</Td>
-                <Td>{school.NAME}</Td>
-                <Td>{school.LSTATE}</Td>
-                <Td>{school.CNTY15}</Td>
-                <Td>{school.NMCNTY15}</Td>
-                <Td>{school.CBSA15}</Td>
-                <Td>{school.NMCBSA15}</Td>
-                <Td>{school.CD15}</Td>
-                <Td>{school.SLDL15}</Td>
-                <Td>{school.SLDU15}</Td>
-                <Td>{school.LZIP}</Td>
-                <Td>{school.LZIP4}</Td>
+                <Td colSpan={12} style={{ textAlign: 'center' }}>
+                  No data
+                </Td>
               </Tr>
-            ))}
+            )}
           </Tbody>
           <Tfoot>
             <Tr>
