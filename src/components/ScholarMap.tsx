@@ -5,7 +5,7 @@ import { NCESDistrictFeatureAttributes, NCESSchoolFeatureAttributes } from '@uti
 import { DistrictMarkers } from './markers/DistrictMarkers'
 import { SchoolMarkers } from './markers/SchoolMarkers'
 
-interface DistrictMapProps {
+interface ScholartMapProps {
   center: [number, number];
   zoom: number;
   districtMarkers: NCESDistrictFeatureAttributes[];
@@ -14,7 +14,7 @@ interface DistrictMapProps {
 }
 
 
-const DistrictMap: React.FC<DistrictMapProps> = ({ center, zoom, districtMarkers, schoolMarkers, handleDistrictSelection }) => {
+const ScholarMap: React.FC<ScholartMapProps> = ({ center, zoom, districtMarkers, schoolMarkers, handleDistrictSelection }) => {
   return (
     <MapContainer center={center} zoom={zoom}>
       <TileLayer
@@ -27,4 +27,4 @@ const DistrictMap: React.FC<DistrictMapProps> = ({ center, zoom, districtMarkers
   );
 };
 
-export default DistrictMap;
+export default ScholarMap;

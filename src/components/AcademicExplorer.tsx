@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
-  Button,
   Input,
   Spinner,
   InputGroup, // Some Chakra components that might be usefull
-  Container,
   InputRightElement,
-  Text,
   IconButton,
   Tooltip,
 } from '@chakra-ui/react';
@@ -16,14 +13,13 @@ import {
   NCESDistrictFeatureAttributes,
   NCESSchoolFeatureAttributes,
 } from '../utils/nces';
-import DistrictMap from './DistrictMap';
-import L from 'leaflet';
+import ScholarMap from './ScholarMap';
 import { RadioGroupStack } from './design/RadioGroupStack';
 import { SearchIcon } from '@chakra-ui/icons';
-import { CENTEROFAMERICA } from 'src/constants/centerOfAmerica';
 import { TableView } from './design/TableView';
+import { CENTEROFAMERICA } from 'src/constants/centerOfAmerica';
 
-const FreshMap: React.FC = () => {
+const AcademicExplorer: React.FC = () => {
   const [searching, setSearching] = React.useState(false);
   const [district, setDistrict] = useState('');
   const [districtDataMarkers, setDistrictDataMarkers] = useState<NCESDistrictFeatureAttributes[]>([]);
@@ -31,8 +27,8 @@ const FreshMap: React.FC = () => {
   const [center, setCenter] = useState<[number, number]>(CENTEROFAMERICA);
   const [zoom, setZoom] = useState(3);
   const [selectedView, setSelectedView] = useState('Map View');
-  const [leaid, setLeaid] = useState('')
-  const [school, setSchool] = useState('')
+  const [leaid, setLeaid] = useState('');
+  const [school, setSchool] = useState('');
 
   const radioOptions = ['Map View', 'Table View'];
 
@@ -42,11 +38,11 @@ const FreshMap: React.FC = () => {
 
   const handleSchoolChange = (event: any) => {
     setSchool(event.target.value);
-  }
+  };
 
   const handleLeaidChange = (event: any) => {
     setLeaid(event.target.value);
-  }
+  };
 
   const handleDistrictSearch = async () => {
     if (district == '') return;
@@ -56,23 +52,23 @@ const FreshMap: React.FC = () => {
     setSearching(false);
   };
 
-   const handleSchoolSearch = async () => {
-     if (school == '') return;
-     setSearching(true);
-     const data = await searchSchools(school, leaid);
-     setSchoolDataMarkers(data);
-     setSearching(false);
-     console.log(schoolDataMarkers);
-   };
+  const handleSchoolSearch = async () => {
+    if (school == '') return;
+    setSearching(true);
+    const data = await searchSchools(school, leaid);
+    setSchoolDataMarkers(data);
+    setSearching(false);
+    console.log(schoolDataMarkers);
+  };
 
   const handleViewSelection = (e: any) => {
     setSelectedView(e);
   };
 
-  const handleDistrictSelection = (e:any) => {
+  const handleDistrictSelection = (e: any) => {
     setLeaid(e);
     console.log(leaid);
-  }
+  };
 
   return (
     <>
@@ -94,7 +90,7 @@ const FreshMap: React.FC = () => {
           label="Optional: LEAID is educational institution identifier. It is required to search for schools within a district. Search for a district and then click on a marker. It will fill this field."
           fontSize="md"
         >
-          <Input width="1/2" size="md" placeholder="LEAID" value={leaid} onChange={handleLeaidChange}/>
+          <Input width="1/2" size="md" placeholder="LEAID" value={leaid} onChange={handleLeaidChange} />
         </Tooltip>
         <Input size="md" placeholder="Search for a school" value={school} onChange={handleSchoolChange} />
         <InputRightElement>
@@ -108,11 +104,17 @@ const FreshMap: React.FC = () => {
           />
         </InputRightElement>
       </InputGroup>
-      <RadioGroupStack handleSwitch={handleViewSelection} options={radioOptions} defaultValue='Map View' name='view'/>
+      <RadioGroupStack handleSwitch={handleViewSelection} options={radioOptions} defaultValue="Map View" name="view" />
       {searching ? (
         <Spinner width="75vh" height="75vh" thickness="10px" color="green.400" />
       ) : selectedView == 'Map View' ? (
-        <DistrictMap center={center} zoom={zoom} districtMarkers={districtDataMarkers} schoolMarkers={schoolDataMarkers} handleDistrictSelection={handleDistrictSelection} />
+        <ScholarMap
+          center={center}
+          zoom={zoom}
+          districtMarkers={districtDataMarkers}
+          schoolMarkers={schoolDataMarkers}
+          handleDistrictSelection={handleDistrictSelection}
+        />
       ) : (
         <TableView districtData={districtDataMarkers} schoolData={schoolDataMarkers} />
       )}
@@ -120,4 +122,4 @@ const FreshMap: React.FC = () => {
   );
 };
 
-export default FreshMap;
+export default AcademicExplorer;

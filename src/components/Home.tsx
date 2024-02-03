@@ -26,8 +26,8 @@ import {
   NCESDistrictFeatureAttributes,
   NCESSchoolFeatureAttributes,
 } from '@utils/nces';
-import DistrictMap from './DistrictMap';
-import FreshMap from './FreshMap'
+import DistrictMap from './ScholarMap';
+import FreshMap from './AcademicExplorer'
 import L from 'leaflet';
 
 interface Marker {
