@@ -6,6 +6,8 @@ import {
   InputRightElement,
   IconButton,
   Tooltip,
+  Button,
+  HStack
 } from '@chakra-ui/react';
 import {
   searchSchoolDistricts,
@@ -70,6 +72,11 @@ const AcademicExplorer: React.FC = () => {
     console.log(leaid);
   };
 
+  const resetState = () => {
+    // Since it"s a single page app, the easiest way to reload every state is to call reload
+    window.location.reload();
+  }
+
   return (
     <>
       <InputGroup width="400px">
@@ -104,7 +111,15 @@ const AcademicExplorer: React.FC = () => {
           />
         </InputRightElement>
       </InputGroup>
-      <RadioGroupStack handleSwitch={handleViewSelection} options={radioOptions} defaultValue="Map View" name="view" />
+      <HStack>
+        <RadioGroupStack
+          handleSwitch={handleViewSelection}
+          options={radioOptions}
+          defaultValue="Map View"
+          name="view"
+        />
+        <Button backgroundColor='red.400' color='white' size='md' _hover={{backgroundColor: 'red'}} onClick={resetState}>Reset</Button>
+      </HStack>
       {searching ? (
         <Spinner width="75vh" height="75vh" thickness="10px" color="green.400" />
       ) : selectedView == 'Map View' ? (
