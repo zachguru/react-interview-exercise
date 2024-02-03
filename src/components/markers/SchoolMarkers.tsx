@@ -4,6 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import  { Icon } from 'leaflet';
 import schoolMarkerIcon from '/schoolicon.png';
 import { NCESSchoolFeatureAttributes } from '@utils/nces';
+import { SchoolPopup } from '@components/popups/SchoolPopup';
 
 
 interface SchoolMarkerProps {
@@ -28,28 +29,11 @@ export const SchoolMarkers: React.FC<SchoolMarkerProps> = ({ data }) => {
           icon={schoolIcon}
           eventHandlers={{
             click: () => {
-              map.setView([marker.LAT, marker.LON], 14);
+              map.setView([marker.LAT, marker.LON], 15);
             },
           }}
         >
-          <Popup>
-            <div>
-              <p>
-                <strong>Name: </strong> {marker.NAME}
-              </p>
-              <p>
-                <strong>Location: </strong> {marker.STREET}, {marker.CITY}, {marker.STATE}, {marker.ZIP}
-              </p>
-              <p>
-                <strong>County: </strong>
-                {marker.NMCNTY}
-              </p>
-              <p>
-                <strong>Locale: </strong>
-                {marker.LOCALE}
-              </p>
-            </div>
-          </Popup>
+        <SchoolPopup school={marker} />
         </Marker>
       ))}
     </>

@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
 import { NCESDistrictFeatureAttributes } from '../../utils/nces';
 import districtMarkerIcon from '/location.png';
-
+import { DistrictPopup } from '@components/popups/DistrictPopup';
 
 interface DistrictMarkerProps {
   data: NCESDistrictFeatureAttributes[];
@@ -12,11 +12,10 @@ interface DistrictMarkerProps {
 }
 
 export const DistrictMarkers: React.FC<DistrictMarkerProps> = ({ data, handleDistrictSelection }) => {
-
   const customIcon = new Icon({
     iconUrl: districtMarkerIcon,
     iconSize: [38, 38],
-  });  
+  });
 
   const map = useMap();
   return data.length > 0 ? (
@@ -28,25 +27,12 @@ export const DistrictMarkers: React.FC<DistrictMarkerProps> = ({ data, handleDis
           icon={customIcon}
           eventHandlers={{
             click: () => {
-              map.setView([marker.LAT1516, marker.LON1516], 14);
+              map.setView([marker.LAT1516, marker.LON1516], 15);
               handleDistrictSelection(marker.LEAID);
             },
           }}
         >
-          <Popup>
-            <div>
-              <p>
-                <strong>Name: </strong> {marker.NAME}
-              </p>
-              <p>
-                <strong>Location: </strong> {marker.LCITY}, {marker.LSTATE}, {marker.LZIP}
-              </p>
-              <p>
-                <strong>County: </strong>
-                {marker.NMCNTY15}
-              </p>
-            </div>
-          </Popup>
+          <DistrictPopup district={marker} />
         </Marker>
       ))}
     </>
