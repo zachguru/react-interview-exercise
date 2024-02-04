@@ -73,9 +73,12 @@ const AcademicExplorer: React.FC = () => {
   };
 
   const resetState = () => {
-    // Since it"s a single page app, the easiest way to reload every state is to call reload
-    window.location.reload();
-  }
+    setDistrict('');
+    setSchool('');
+    setLeaid('');
+    setDistrictDataMarkers([]);
+    setSchoolDataMarkers([]);
+  };
 
   return (
     <>
@@ -118,7 +121,20 @@ const AcademicExplorer: React.FC = () => {
           defaultValue="Map View"
           name="view"
         />
-        <Button backgroundColor='red.400' color='white' size='md' _hover={{backgroundColor: 'red'}} onClick={resetState}>Reset</Button>
+        <Button
+          backgroundColor="blue.400"
+          color="white"
+          size="md"
+          _hover={{ backgroundColor: '#2AB8FF' }}
+          onClick={resetState}
+          px={5}
+          py={3}
+          borderWidth="1px"
+          borderRadius="md"
+          boxShadow="md"
+        >
+          Reset
+          </Button>
       </HStack>
       {searching ? (
         <Spinner width="75vh" height="75vh" thickness="10px" color="green.400" />
