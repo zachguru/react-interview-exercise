@@ -4,9 +4,10 @@ import { NCESSchoolFeatureAttributes } from '@utils/nces';
 import React from 'react';
 
 export interface SchoolTableProps {
-  data: NCESSchoolFeatureAttributes[];
+  data: NCESSchoolFeatureAttributes[]; // School data to be displayed
 }
 
+// Table filled with school data. Displays when Table View -> View Schools
 export const SchoolsTable: React.FC<SchoolTableProps> = ({ data }) => {
   return (
     <>

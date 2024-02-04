@@ -2,6 +2,7 @@ import { useRadio, UseRadioProps } from '@chakra-ui/radio';
 import { Box } from '@chakra-ui/react';
 import React from 'react';
 
+// Customized radio button
 export const RadioCard: React.FC<UseRadioProps> = (props) => {
   const { getInputProps, getRadioProps } = useRadio(props);
 

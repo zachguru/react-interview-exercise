@@ -1,37 +1,24 @@
+import { Text } from '@chakra-ui/layout';
+import { NCESSchoolFeatureAttributes } from '@utils/nces';
 import React from 'react';
 import { Popup } from 'react-leaflet';
 
-interface SchoolPopupProps {
-  school: {
-    NAME?: string;
-    STREET?: string;
-    CITY?: string;
-    STATE?: string;
-    ZIP?: string;
-    NMCNTY?: string;
-    LOCALE?: string;
-  };
-}
-
-export const SchoolPopup: React.FC<SchoolPopupProps> = ({ school }) => {
+// School Popup component. Opens when you click on a school marker
+export const SchoolPopup: React.FC<{ school: NCESSchoolFeatureAttributes }> = ({ school }) => {
   return (
     <Popup>
-      <div>
-        <p>
+      <>
+        <Text>
           <strong>Name: </strong> {school.NAME}
-        </p>
-        <p>
+        </Text>
+        <Text>
           <strong>Location: </strong> {school.STREET}, {school.CITY}, {school.STATE}, {school.ZIP}
-        </p>
-        <p>
+        </Text>
+        <Text>
           <strong>County: </strong>
           {school.NMCNTY}
-        </p>
-        <p>
-          <strong>Locale: </strong>
-          {school.LOCALE}
-        </p>
-      </div>
+        </Text>
+      </>
     </Popup>
   );
 };

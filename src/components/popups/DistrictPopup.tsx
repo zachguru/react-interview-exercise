@@ -1,31 +1,24 @@
+import { Text } from '@chakra-ui/layout';
+import { NCESDistrictFeatureAttributes } from '@utils/nces';
 import React from 'react';
 import { Popup } from 'react-leaflet';
 
-interface DistrictPopupProps {
-  district: {
-    NAME?: string;
-    LCITY?: string;
-    LSTATE?: string;
-    LZIP?: string;
-    NMCNTY15?: string;
-  };
-}
-
-export const DistrictPopup: React.FC<DistrictPopupProps> = ({ district }) => {
+// District Popup component. Opens when you click on a district marker
+export const DistrictPopup: React.FC<{ district: NCESDistrictFeatureAttributes }> = ({ district }) => {
   return (
     <Popup>
-      <div>
-        <p>
+      <>
+        <Text>
           <strong>Name: </strong> {district.NAME}
-        </p>
-        <p>
+        </Text>
+        <Text>
           <strong>Location: </strong> {district.LCITY}, {district.LSTATE}, {district.LZIP}
-        </p>
-        <p>
+        </Text>
+        <Text>
           <strong>County: </strong>
           {district.NMCNTY15}
-        </p>
-      </div>
+        </Text>
+      </>
     </Popup>
   );
 };

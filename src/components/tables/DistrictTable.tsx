@@ -4,9 +4,10 @@ import { NCESDistrictFeatureAttributes } from '@utils/nces';
 import React from 'react';
   
 export interface DistrictTableProps {
-    data: NCESDistrictFeatureAttributes[];
+    data: NCESDistrictFeatureAttributes[]; // District data to be displayed
   }
-  
+
+// Table filled with district data, displays on Table View -> View Districts
 export const DistrictTable: React.FC<DistrictTableProps> = ({ data }) => {
   
     return (

@@ -7,10 +7,11 @@ import districtMarkerIcon from '/location.png';
 import { DistrictPopup } from '@components/popups/DistrictPopup';
 
 interface DistrictMarkerProps {
-  data: NCESDistrictFeatureAttributes[];
-  handleDistrictSelection: (e: any) => void;
+  data: NCESDistrictFeatureAttributes[]; // Data to be used for denotation of district locations
+  handleDistrictSelection: (e: any) => void; // Function which handles marker selection
 }
 
+// District markers appear on Map View when searching for district
 export const DistrictMarkers: React.FC<DistrictMarkerProps> = ({ data, handleDistrictSelection }) => {
   const customIcon = new Icon({
     iconUrl: districtMarkerIcon,

@@ -1,23 +1,21 @@
 import React from 'react';
 import { Marker, useMap, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import  { Icon } from 'leaflet';
+import { Icon } from 'leaflet';
 import schoolMarkerIcon from '/schoolicon.png';
 import { NCESSchoolFeatureAttributes } from '@utils/nces';
 import { SchoolPopup } from '@components/popups/SchoolPopup';
 
-
 interface SchoolMarkerProps {
-  data: NCESSchoolFeatureAttributes[];
+  data: NCESSchoolFeatureAttributes[]; // Data to be used for denotation of school locations
 }
 
+// School markers appear on a Map View when searching for schools
 export const SchoolMarkers: React.FC<SchoolMarkerProps> = ({ data }) => {
-
-   const schoolIcon = new Icon({
-     iconUrl: schoolMarkerIcon,
-     iconSize: [38, 38],
-   }); 
-
+  const schoolIcon = new Icon({
+    iconUrl: schoolMarkerIcon,
+    iconSize: [38, 38],
+  });
 
   const map = useMap();
   return data.length > 0 ? (
@@ -33,7 +31,7 @@ export const SchoolMarkers: React.FC<SchoolMarkerProps> = ({ data }) => {
             },
           }}
         >
-        <SchoolPopup school={marker} />
+          <SchoolPopup school={marker} />
         </Marker>
       ))}
     </>

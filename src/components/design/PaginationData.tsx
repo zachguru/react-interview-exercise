@@ -5,12 +5,14 @@ import { NCESDistrictFeatureAttributes } from '@utils/nces';
   
 interface PaginationProps {
     data: (NCESSchoolFeatureAttributes | NCESDistrictFeatureAttributes)[];
-    type: string;
+    type: string; // Used to distinguish if the data provided is for school or for district
   }
-  
+
+// Component used to display tabular data. It displays 10 rows per page
 export const PaginatedData: React.FC<PaginationProps> = ({ data, type }) => {
     const [currentPage, setCurrentPage] = useState(1);
   
+    // Pagination logic
     const totalPages = Math.ceil(data.length / 10);
     const startIndex = (currentPage - 1) * 10;
     const endIndex = startIndex + 10;

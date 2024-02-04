@@ -5,10 +5,11 @@ import React, { useState } from 'react';
 import { RadioGroupStack } from './RadioGroupStack';
 
 export interface TableViewProps {
-  districtData : NCESDistrictFeatureAttributes[];
-  schoolData : NCESSchoolFeatureAttributes[]
+  districtData : NCESDistrictFeatureAttributes[]; // School districts data
+  schoolData : NCESSchoolFeatureAttributes[] // School data
 }
 
+// Table container component which provides selection mechanism for displaying scholar data
 export const TableView: React.FC<TableViewProps> = ({ districtData, schoolData }) => {
   const [view, setSelectedView] = useState('View Districts');
   const viewOptions = ['View Districts', 'View Schools'];
