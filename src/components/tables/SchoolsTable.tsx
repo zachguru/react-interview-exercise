@@ -1,7 +1,14 @@
-import { Table, Thead, Tr, Th, TableCaption, TableContainer } from '@chakra-ui/react';
-import { PaginatedData } from '@components/design/PaginationData';
-import { NCESSchoolFeatureAttributes } from '@utils/nces';
-import React from 'react';
+import {
+  Table,
+  Thead,
+  Tr,
+  Th,
+  TableCaption,
+  TableContainer,
+} from "@chakra-ui/react";
+import { PaginatedData } from "@components/design/PaginationData";
+import { NCESSchoolFeatureAttributes } from "@utils/nces";
+import React from "react";
 
 export interface SchoolTableProps {
   data: NCESSchoolFeatureAttributes[]; // School data to be displayed
@@ -29,7 +36,7 @@ export const SchoolsTable: React.FC<SchoolTableProps> = ({ data }) => {
               <Th>LOCALE</Th>
             </Tr>
           </Thead>
-          <PaginatedData data={data} type='school'/>
+          <PaginatedData data={data} type="school" />
         </Table>
       </TableContainer>
     </>

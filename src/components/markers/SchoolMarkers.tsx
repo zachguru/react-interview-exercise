@@ -1,5 +1,5 @@
 import React from 'react';
-import { Marker, useMap, Popup } from 'react-leaflet';
+import { Marker, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
 import schoolMarkerIcon from '/schoolicon.png';
