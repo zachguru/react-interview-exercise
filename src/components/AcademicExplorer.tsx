@@ -26,11 +26,11 @@ const AcademicExplorer: React.FC = () => {
   const [district, setDistrict] = useState('');
   const [districtDataMarkers, setDistrictDataMarkers] = useState<NCESDistrictFeatureAttributes[]>([]);
   const [schoolDataMarkers, setSchoolDataMarkers] = useState<NCESSchoolFeatureAttributes[]>([]);
-  const [center, setCenter] = useState<[number, number]>(CENTEROFAMERICA);
-  const [zoom, setZoom] = useState(3);
   const [selectedView, setSelectedView] = useState('Map View');
   const [leaid, setLeaid] = useState('');
   const [school, setSchool] = useState('');
+
+  const zoom = 3;
 
   const radioOptions = ['Map View', 'Table View'];
 
@@ -124,7 +124,7 @@ const AcademicExplorer: React.FC = () => {
         <Spinner width="75vh" height="75vh" thickness="10px" color="green.400" />
       ) : selectedView == 'Map View' ? (
         <ScholarMap
-          center={center}
+          center={CENTEROFAMERICA}
           zoom={zoom}
           districtMarkers={districtDataMarkers}
           schoolMarkers={schoolDataMarkers}

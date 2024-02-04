@@ -23,7 +23,7 @@ code {
     -webkit-backdrop-filter: blur(10px) saturate(1.8);
     backdrop-filter: blur(10px) saturate(1.8);
     background-color: rgba(255, 255, 255, 0.8);
-    //border-bottom: 2px solid var(--chakra-colors-brand-blue);
+    border-bottom: 2px solid var(--chakra-colors-brand-blue);
   }
 }
 
@@ -59,8 +59,8 @@ code {
 }
 
 .leaflet-container {
-  height: 80vh;
-  width: 120vh;
+  height: 66vh;
+  width: 99vh;
   border: 2px solid #28b442; 
   border-radius: 10px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
