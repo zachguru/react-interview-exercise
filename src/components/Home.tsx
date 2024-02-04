@@ -18,7 +18,6 @@ const Home: React.FC = () => {
           <Card variant="rounded" borderColor="blue">
             <Heading>School Data Finder</Heading>
             <AcademicExplorer />
-            <Box marginTop={4} />
           </Card>
         </ScaleFade>
       </Center>
