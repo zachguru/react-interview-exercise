@@ -60,7 +60,6 @@ const AcademicExplorer: React.FC = () => {
     const data = await searchSchools(school, leaid);
     setSchoolDataMarkers(data);
     setSearching(false);
-    console.log(schoolDataMarkers);
   };
 
   const handleViewSelection = (e: any) => {
@@ -69,7 +68,6 @@ const AcademicExplorer: React.FC = () => {
 
   const handleDistrictSelection = (e: any) => {
     setLeaid(e);
-    console.log(leaid);
   };
 
   const resetState = () => {
