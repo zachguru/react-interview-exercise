@@ -1,23 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Button,
   Center,
   Heading,
   Text,
-  Icon,
-  Input,
   ScaleFade,
   OrderedList,
   Divider,
   ListItem,
   Spinner,
-  InputGroup, // Some Chakra components that might be usefull
-  HStack,
-  VStack,
-  InputRightAddon,
-  Container,
-  InputRightElement,
-  Box,
 } from '@chakra-ui/react';
 import { Card } from '@components/design/Card';
 import {
@@ -26,21 +16,11 @@ import {
   NCESDistrictFeatureAttributes,
   NCESSchoolFeatureAttributes,
 } from '@utils/nces';
-import DistrictMap from './ScholarMap';
-import AcademicExplorer from './AcademicExplorer'
-import L from 'leaflet';
 
-interface Marker {
-  geocode: [number, number];
-  popUp: string;
-}
 
-const Home: React.FC = () => {
+// Intro is a not used component. It displays initial project state. Saving it for personal sentimental value
+const Intro: React.FC = () => {
   const [searching, setSearching] = React.useState(false);
-  const [district, setDistrict] = useState('');
-  const [dataMarkers, setDataMarkers] = useState<NCESDistrictFeatureAttributes[]>([]);
-  const [center, setCenter] = useState<[number, number]>([39.8283, -98.5795]);
-  const [zoom, setZoom] = useState(4);
   const [districtSearch, setDistrictSearch] = React.useState<NCESDistrictFeatureAttributes[]>([]);
   const [schoolSearch, setSchoolSearch] = React.useState<NCESSchoolFeatureAttributes[]>([]);
 
@@ -57,15 +37,6 @@ const Home: React.FC = () => {
     setSearching(false);
   };
 
-  const handleDistrictChange = (event: any) => {
-    setDistrict(event.target.value);
-  };
-
-  const handleSearch = async () => {
-    const data = await searchSchoolDistricts(district);
-    setDataMarkers(data);
-  };
-
   useEffect(() => {
     demo();
   }, []);
@@ -76,7 +47,7 @@ const Home: React.FC = () => {
         <ScaleFade initialScale={0.9} in={true}>
           <Card variant="rounded" borderColor="blue">
             <Heading>School Data Finder</Heading>
-            {/* <Text>
+            <Text>
               How would you utilize React.useEffect with the searchSchoolDistricts and searchSchools functions? <br />
               Using{' '}
               <a href="https://chakra-ui.com/docs/principles" target="_blank">
@@ -99,9 +70,7 @@ const Home: React.FC = () => {
             {districtSearch.length} Demo Districts
             <br />
             {schoolSearch.length} Demo Schools
-            <br /> */}
-            <AcademicExplorer />
-            <Box marginTop={4} />
+            <br />
           </Card>
         </ScaleFade>
       </Center>
@@ -109,4 +78,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Intro
