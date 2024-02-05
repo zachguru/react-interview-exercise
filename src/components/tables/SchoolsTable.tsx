@@ -19,7 +19,7 @@ export const SchoolsTable: React.FC<SchoolTableProps> = ({ data }) => {
   return (
     <>
       <TableContainer margin="10px">
-        <Table size="sm" variant="striped" colorScheme="green">
+        <Table className="responsive-table" size="sm" variant="striped" colorScheme="green">
           <TableCaption>Schools and school districts</TableCaption>
           <Thead>
             <Tr>

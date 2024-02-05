@@ -76,3 +76,10 @@ code {
     width: 90vw; 
   }
 }
+
+// Responsive design for table - enabling horizontal scroll 
+@media (max-width: 768px) {
+  .responsive-table {
+    overflow-x: auto;
+  }
+}
