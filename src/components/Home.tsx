@@ -8,7 +8,7 @@ import {
 import { Card } from '@components/design/Card';
 import AcademicExplorer from './AcademicExplorer'
 
-
+// Main component on Home Page
 const Home: React.FC = () => {
 
   return (
