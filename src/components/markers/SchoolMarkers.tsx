@@ -2,7 +2,7 @@ import React from 'react';
 import { Marker, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
-import schoolMarkerIcon from '/schoolicon.png';
+import schoolMarkerIcon from '/schoolMarker.png';
 import { NCESSchoolFeatureAttributes } from '@utils/nces';
 import { SchoolPopup } from '@components/popups/SchoolPopup';
 

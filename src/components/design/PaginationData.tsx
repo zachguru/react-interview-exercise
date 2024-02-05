@@ -12,6 +12,9 @@ import React, { useState } from "react";
 import { NCESSchoolFeatureAttributes } from "@utils/nces";
 import { NCESDistrictFeatureAttributes } from "@utils/nces";
 
+// Interface for pagination component. It contains table rows and page selection footer
+// Right now pagination can only display schools and districts, but if you add a new interface and use a different API with different fields
+// you can make this component work with every NCES type of data.
 interface PaginationProps {
   data: (NCESSchoolFeatureAttributes | NCESDistrictFeatureAttributes)[];
   type: string; // Used to distinguish if the data provided is for school or for district

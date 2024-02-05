@@ -1,9 +1,9 @@
 import React from 'react';
-import { Marker, useMap, Popup } from 'react-leaflet';
+import { Marker, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Icon } from 'leaflet';
 import { NCESDistrictFeatureAttributes } from '../../utils/nces';
-import districtMarkerIcon from '/location.png';
+import districtMarkerIcon from '/districtMarker.png';
 import { DistrictPopup } from '@components/popups/DistrictPopup';
 
 interface DistrictMarkerProps {
