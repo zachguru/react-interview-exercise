@@ -1,0 +1,2 @@
+export const CENTEROFAMERICA: [number,number] = [39.8283, -98.5795]; // Geographical centre of America. Needed for initial map view
+export const DEFAULTZOOM: number = 3; // Default zoom intensity on Map View

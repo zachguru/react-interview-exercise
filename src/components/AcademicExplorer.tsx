@@ -20,28 +20,25 @@ import ScholarMap from "./ScholarMap";
 import { RadioGroupStack } from "./design/RadioGroupStack";
 import { SearchIcon } from "@chakra-ui/icons";
 import { TableView } from "./design/TableView";
-import { CENTEROFAMERICA } from "src/constants/centerOfAmerica";
+import { CENTEROFAMERICA, DEFAULTZOOM } from "src/constants";
 
 const AcademicExplorer: React.FC = () => {
-  const [searching, setSearching] = React.useState(false);
-  const [district, setDistrict] = useState("");
-  const [districtDataMarkers, setDistrictDataMarkers] = useState<
-    NCESDistrictFeatureAttributes[]
-  >([]);
-  const [schoolDataMarkers, setSchoolDataMarkers] = useState<
-    NCESSchoolFeatureAttributes[]
-  >([]);
-  const [selectedView, setSelectedView] = useState("Map View");
-  const [leaid, setLeaid] = useState("");
-  const [school, setSchool] = useState("");
+  // ----------- States --------------
+  const [searching, setSearching] = React.useState(false); // State used for triggering spinner
+  const [district, setDistrict] = useState(""); // District search field
+  const [districtDataMarkers, setDistrictDataMarkers] = useState<NCESDistrictFeatureAttributes[]>([]);
+  const [schoolDataMarkers, setSchoolDataMarkers] = useState<NCESSchoolFeatureAttributes[]>([]);
+  const [selectedView, setSelectedView] = useState("Map View"); // Default view when launching the app
+  const [leaid, setLeaid] = useState(""); // Optional LEAID field which represents districts educational ID. Used for school searching
+  const [school, setSchool] = useState(""); // School search field
 
-  const zoom = 3;
+  const radioOptions = ["Map View", "Table View"]; // Options
 
-  const radioOptions = ["Map View", "Table View"];
+  // --------- Media Query hook ----------
+  const [isLargerrThan768] = useMediaQuery("(min-width: 768px)");   // Media query
 
-  // Media query
-  const [isLargerrThan768] = useMediaQuery("(min-width: 768px)");
 
+  // -------------Handlers ----------------
   const handleDistrictChange = (event: any) => {
     setDistrict(event.target.value);
   };
@@ -168,7 +165,7 @@ const AcademicExplorer: React.FC = () => {
       ) : selectedView == "Map View" ? (
         <ScholarMap
           center={CENTEROFAMERICA}
-          zoom={zoom}
+          zoom={DEFAULTZOOM}
           districtMarkers={districtDataMarkers}
           schoolMarkers={schoolDataMarkers}
           handleDistrictSelection={handleDistrictSelection}

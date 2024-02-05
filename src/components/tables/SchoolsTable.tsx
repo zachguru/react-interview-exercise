@@ -15,6 +15,7 @@ export interface SchoolTableProps {
 }
 
 // Table filled with school data. Displays when Table View -> View Schools
+// Due to difference in table headers, had to make separate tables for schools and distrcts
 export const SchoolsTable: React.FC<SchoolTableProps> = ({ data }) => {
   return (
     <>

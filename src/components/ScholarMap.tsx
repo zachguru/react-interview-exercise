@@ -6,14 +6,14 @@ import { DistrictMarkers } from './markers/DistrictMarkers'
 import { SchoolMarkers } from './markers/SchoolMarkers'
 
 interface ScholartMapProps {
-  center: [number, number];
-  zoom: number;
-  districtMarkers: NCESDistrictFeatureAttributes[];
-  schoolMarkers : NCESSchoolFeatureAttributes[];
-  handleDistrictSelection: (e:any) => void
+  center: [number, number]; // Center of map
+  zoom: number; // Zoom intesity
+  districtMarkers: NCESDistrictFeatureAttributes[]; // Markers which resemble district locations on map
+  schoolMarkers : NCESSchoolFeatureAttributes[]; // Markers which resemble school locations on map
+  handleDistrictSelection: (e:any) => void // Handler method for updating LEAID when clicking on district
 }
 
-
+// Map commponent
 const ScholarMap: React.FC<ScholartMapProps> = ({ center, zoom, districtMarkers, schoolMarkers, handleDistrictSelection }) => {
   return (
     <MapContainer center={center} zoom={zoom}>
