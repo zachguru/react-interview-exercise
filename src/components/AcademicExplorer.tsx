@@ -88,7 +88,7 @@ const AcademicExplorer: React.FC = () => {
 
   return (
     <>
-      <InputGroup width={isLargerrThan768 ? "400px" : "200px"}>
+      <InputGroup width={isLargerrThan768 ? "400px" : "300px"}>
         <Input
           size="md"
           placeholder="Search for a district"
@@ -106,7 +106,7 @@ const AcademicExplorer: React.FC = () => {
           />
         </InputRightElement>
       </InputGroup>
-      <InputGroup width={isLargerrThan768 ? "400px" : "200px"}>
+      <InputGroup width={isLargerrThan768 ? "400px" : "300px"}>
         <Tooltip
           label="Optional: LEAID is educational institution identifier. It is required to search for schools within a district. Search for a district and then click on a marker. It will fill this field."
           fontSize="md"
